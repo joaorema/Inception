@@ -1,16 +1,6 @@
 #!/bin/bash
 
-set -ex # print commands & exit on error (debug mode)
-
-# WP_URL=login.42.fr
-# WP_TITLE=Inception
-# WP_ADMIN_USER=theroot
-# WP_ADMIN_PASSWORD=123
-# WP_ADMIN_EMAIL=theroot@123.com
-# WP_USER=theuser
-# WP_PASSWORD=abc
-# WP_EMAIL=theuser@123.com
-# WP_ROLE=editor
+# set -ex # print commands & exit on error (debug mode)
 
 chown -R www-data:www-data /var/www/inception/
 
