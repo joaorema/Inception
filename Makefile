@@ -30,6 +30,7 @@ create_dir:
 	@mkdir -p ~/data/database
 	@mkdir -p ~/data/wordpress_files
 	@mkdir -p ~/data/redis_data
+	@mkdir -p ~/data/ftpuser
 
 # creates a backup of the data folder in the home directory
 backup:
@@ -42,6 +43,7 @@ clean:
 	@if [ -n "$$(docker ps -a --filter "name=wordpress" -q)" ]; then docker rm -f wordpress > $(HIDE) && echo " $(WP_CLN)" ; fi
 	@if [ -n "$$(docker ps -a --filter "name=mariadb" -q)" ]; then docker rm -f mariadb > $(HIDE) && echo " $(DB_CLN)" ; fi
 	@if [ -n "$$(docker ps -a --filter "name=redis" -q)" ]; then docker rm -f redis > $(HIDE) && echo " $(REDIS_CLN)" ; fi
+	@if [ -n "$$(docker ps -a --filter "name=ftp" -q)" ]; then docker rm -f ftp > $(HIDE) && echo " $(FTP_CLN)" ; fi
 
 # backups the data and removes the containers, images and the host url from the host file
 fclean: clean backup
@@ -49,7 +51,8 @@ fclean: clean backup
 	@if [ -n "$$(docker image ls $(NAME)-nginx -q)" ]; then docker image rm -f $(NAME)-nginx > $(HIDE) && echo " $(NX_FLN)" ; fi
 	@if [ -n "$$(docker image ls $(NAME)-wordpress -q)" ]; then docker image rm -f $(NAME)-wordpress > $(HIDE) && echo " $(WP_FLN)" ; fi
 	@if [ -n "$$(docker image ls $(NAME)-mariadb -q)" ]; then docker image rm -f $(NAME)-mariadb > $(HIDE) && echo " $(DB_FLN)" ; fi
-	@if [ -n "$$(docker image ls $(NAME)-redis -q)" ]; then docker image rm -f $(NAME)-redis > $(HIDE) && echo " $(REGIS_FLN)" ; fi
+	@if [ -n "$$(docker image ls $(NAME)-redis -q)" ]; then docker image rm -f $(NAME)-redis > $(HIDE) && echo " $(REDIS_FLN)" ; fi
+	@if [ -n "$$(docker image ls $(NAME)-ftp -q)" ]; then docker image rm -f $(NAME)-ftp > $(HIDE) && echo " $(FTP_FLN)" ; fi
 	@sudo hostsed rm 127.0.0.1 $(HOST_URL) > $(HIDE) && echo " $(HOST_RM)"
 
 status:
@@ -113,11 +116,14 @@ HOST_RM		= $(MARK) Host $(HOST_URL)		$(REMOVED)
 NX_CLN		= $(MARK) Container nginx		$(REMOVED)
 WP_CLN		= $(MARK) Container wordpress		$(REMOVED)
 DB_CLN		= $(MARK) Container mariadb		$(REMOVED)
-REGIS_CLN	= $(MARK) Container regis		$(REMOVED)
-NX_FLN		= $(MARK) Image $(NAME)-nginx	$(REMOVED)
+REDIS_CLN	= $(MARK) Container redis		$(REMOVED)
+FTP_CLN		= $(MARK) Container ftp			$(REMOVED)
+NX_FLN		= $(MARK) Image $(NAME)-nginx		$(REMOVED)
 WP_FLN		= $(MARK) Image $(NAME)-wordpress	$(REMOVED)
-DB_FLN		= $(MARK) Image $(NAME)-mariadb	$(REMOVED)
-REGIS_FLN	= $(MARK) Image $(NAME)-regis	$(REMOVED)
+DB_FLN		= $(MARK) Image $(NAME)-mariadb		$(REMOVED)
+REDIS_FLN	= $(MARK) Image $(NAME)-redis		$(REMOVED)
+FTP_FLN		= $(MARK) Image $(NAME)-ftp		$(REMOVED)
+
 
 BKP		= $(MARK) Backup at $(HOME)	$(CREATED)
 

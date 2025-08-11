@@ -68,6 +68,28 @@ services:
     depends_on:
       - wordpress
 
+ 
+  # ftp container ------------------------------------------------------------
+
+  ftp:
+    container_name: ftp
+    build: ./requirements/ftp/
+    volumes:
+      - wordpress_files:/home/ftpuser
+    ports:
+      - "21:21"
+      - "30000-30009:30000-30009"
+    networks:
+      - all
+    environment:
+      FTP_USER: ftpuser
+      FTP_PASS: ftppass
+    restart: on-failure
+    depends_on:
+      - wordpress
+
+
+
 # volumes --------------------------------------------------------------------
 
 # keeps the data shared between the containers
