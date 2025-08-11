@@ -35,7 +35,6 @@ services:
   # nginx container ------------------------------------------------------------
 
   # this is the last container to be created, it depends on the wordpress container
-  # it use args to pass the certificate and key path to the Dockerfile
   # in the build moment with show the private informations that where in the .env file
   nginx:
     container_name: nginx
@@ -51,6 +50,21 @@ services:
     restart: on-failure
     env_file:
       - .env
+    depends_on:
+      - wordpress
+
+  # redis container ------------------------------------------------------------
+
+  # this is the first container from bonus, it depends on the wordpress container
+  redis:
+    container_name: redis
+    build: ./requirements/redis/
+    volumes:
+      - redis_data:/data
+    networks:
+      - all
+    init: true
+    restart: on-failure
     depends_on:
       - wordpress
 
@@ -76,6 +90,13 @@ volumes:
       type: none
       o: bind
       device: ~/data/wordpress_files
+      
+  redis_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ~/data/redis_data
 
 # networks --------------------------------------------------------------------
 
