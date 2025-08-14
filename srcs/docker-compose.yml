@@ -42,8 +42,10 @@ services:
       context: ./requirements/nginx/
     ports:
       - '443:443'
+      - '8080:8080'
     volumes:
       - wordpress_files:/var/www/inception/
+      - ./static_site:/var/www/static_site:ro
     networks:
       - all
     init: true

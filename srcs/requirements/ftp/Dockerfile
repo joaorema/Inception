@@ -1,5 +1,7 @@
 FROM debian:bullseye
 
+EXPOSE 21 30000-30009
+
 RUN apt-get update && \
     apt-get install -y --no-install-recommends vsftpd && \
     rm -rf /var/lib/apt/lists/*
@@ -16,7 +18,6 @@ RUN echo "/bin/bash" >> /etc/shells
 # Mark script as executable
 RUN chmod +x /setup.sh
 
-EXPOSE 21 30000-30009
 
 ENTRYPOINT ["/setup.sh"]
 

@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 
+chown -R 33:33 /home/ftpuser
+chmod -R 755 /home/ftpuser
+
 # Default values if not set in environment
 FTP_USER=${FTP_USER:-ftpuser}
 FTP_PASS=${FTP_PASS:-ftppass}
