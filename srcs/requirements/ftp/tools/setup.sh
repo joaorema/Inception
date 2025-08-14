@@ -4,6 +4,10 @@ set -e
 chown -R 33:33 /home/ftpuser
 chmod -R 755 /home/ftpuser
 
+if [ -f /home/ftpuser/index.html ]; then
+    chmod 777 /home/ftpuser/index.html
+fi
+
 # Default values if not set in environment
 FTP_USER=${FTP_USER:-ftpuser}
 FTP_PASS=${FTP_PASS:-ftppass}

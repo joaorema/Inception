@@ -16,10 +16,15 @@ all: $(NAME)
 $(NAME): start
 
 # puts the url in the host files and starts the containers trough docker compose
-start: create_dir
+start: create_dir fix_static_permissions
 	@sudo hostsed add 127.0.0.1 $(HOST_URL) > $(HIDE) && echo " $(HOST_ADD)"
 	@docker compose -p $(NAME) -f $(COMPOSE) up --build || (echo " $(FAIL)" && exit 1)
 	@echo " $(UP)"
+	
+fix_static_permissions:
+	@sudo chown -R $(shell id -u):$(shell id -g) ./srcs/static_site
+	@chmod -R 755 ./srcs/static_site
+	@chmod 644 ./srcs/static_site/index.html
 
 # stops the containers through docker compose
 remove:
