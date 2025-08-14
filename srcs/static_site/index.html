@@ -4,34 +4,155 @@
     <meta charset="UTF-8">
     <title>Joao Rema - Resume</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 40px; background: #f9f9f9; }
-        .container { max-width: 700px; margin: auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px #ccc; }
-        h1 { margin-top: 0; }
-        h2 { color: #007acc; }
-        ul { padding-left: 20px; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 40px;
+            background: linear-gradient(135deg, #e0f7fa, #f1f8e9);
+        }
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #003366;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+        h2 {
+            color: #003366;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        a {
+            color: #003366;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            color: #003366;
+            text-decoration: underline;
+        }
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        ul li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+        ul li::before {
+            content: "•";
+            color: #000000;
+            position: absolute;
+            left: 0;
+        }
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
+            margin: 0 auto 20px auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+        .job-details {
+            margin-top: 5px;    /* space between title and bullet points */
+            margin-left: 20px;  /* indentation */
+            list-style-type: none; /* keeps bullet points */
+        }
+
+        .job-details li {
+            margin-bottom: 4px; /* space between points */
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <img src="/home/jpedro-c/Inception/srcs/static_site/Foto.png" alt="Joao Rema" class="profile-pic">
         <h1>Joao Rema</h1>
         <p>Email: joaopcrema@gmail.com | Phone: (+351) 915378610</p>
         <hr>
+        <h2>About me</h2>
+        <p>Degree in Tourism Management with 8 years of experience in client facing roles and sales. Very curious and passionate
+        about problem solving using logical thinking. Currently completing a software development program at 42 Porto with
+            programming experience in C and C++. Looking to transition into tech by combining strong soft skills with a growing
+            expertise in software development.</p>
         <h2>Education</h2>
-        <p>Programming, 42 Porto, 2024 - Current</p>
+        <p>Software Development, 42 Porto, 2012 - 2015</p>
+        <p>Tourism Management, ESTL, 2024 - Current</p>
+        <p>Sales Technician, ECP, 2008 - 2011</p>
         <h2>Experience</h2>
         <ul>
-            <li><strong>Software Engineer</strong>, TechCorp (2023–Present)</li>
-            <li><strong>Intern</strong>, WebStart (2022)</li>
+            <li>
+                <strong>Travel Consultant</strong>, <strong>LivingTours</strong> (2017–2024)
+                <ul class="job-details">
+                    <li>Welcoming and assisting visitors with information, travel guidance and tailored services.</li>
+                    <li>Promoted and sold tourism-related products.</li>
+                    <li>Ensured excellent customer service in multiple languages.</li>
+                </ul>
+            </li>
+        </ul>
+        <h2>Projects</h2>
+        <ul>
+            <li>
+                <strong>Minishell</strong> | C
+                <ul class="job-details">
+                    <li>Developed parsing tools, syntax checkers and created a safe and clean way to create tokens.</li>
+                    <li>Developed tools to parse tokens, create binary tree and implemented ways to traverse and execute it.</li>
+                    <li>Created herdoc functions, expansion of variables and handled signals.</li>
+                </ul>
+            </li>
+            <li>
+                <strong>CPP 0 - 4</strong> | C++
+                <ul class="job-details">
+                    <li>Develop a series of modular projects focused on object oriented programming in C++.</li>
+                    <li>Experience with classes, inheritance, polymorphism, operator overloading and memory management.</li>
+                </ul>
+            </li>
+            <li>
+                <strong>CUB3D</strong> | C
+                <ul class="job-details">
+                    <li>Implemented ray casting using DDA algorithm and created functions to manage textures, player movement and collisions.</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Card Game</strong> | C++
+                <ul class="job-details">
+                    <li>Fun card game in C++ that I am developing in my spare time.</li>
+                </ul>
+            </li>
         </ul>
         <h2>Skills</h2>
         <ul>
             <li>C++, C, HTML</li>
             <li>Linux, Docker, Git</li>
+            <li>Customer Service</li>
+            <li>Teamwork</li>
+            <li>Problem solving</li>
         </ul>
-        <h2>Projects</h2>
+        <h2>Languages</h2>
         <ul>
-            <li><strong>Inception</strong>: Multi-container web stack with Docker Compose</li>
-            <li><strong>Portfolio Website</strong>: Personal site built with HTML/CSS</li>
+            <li><strong>English</strong>: C1</li>
+            <li><strong>Portuguese</strong>: Native</li>
+            <li><strong>French</strong>: B1</li>
+            <li><strong>Spanish</strong>: B2</li>
+        </ul>
+        <h2>Links</h2>
+        <ul>
+            <li><strong>Linkedin</strong>
+                <a href="https://www.linkedin.com/in/joao-rema-63b096309">Link</a></li>
+                </a>
+            </li>
+             <li><strong>Github</strong>
+                <a href="https://github.com/joaorema">Link</a></li>
+                </a>
+            </li>
         </ul>
     </div>
 </body>
