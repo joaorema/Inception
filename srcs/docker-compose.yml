@@ -90,6 +90,18 @@ services:
     depends_on:
       - wordpress
 
+   # adminer service ------------------------------------------------------------
+
+  adminer:
+    container_name: adminer
+    build: ./requirements/adminer/
+    networks:
+      - all
+    ports:
+      - "8081:80"      # Host port 8081, container port 80
+    depends_on:
+      - mariadb
+    restart: on-failure
 
 
 # volumes --------------------------------------------------------------------
