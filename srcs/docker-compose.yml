@@ -103,7 +103,17 @@ services:
       - mariadb
     restart: on-failure
 
-
+  # whoami container ------------------------------------------------------------
+  whoami:
+    container_name: whoami
+    build: ./requirements/whoami/
+    ports:
+      - "8000:8000"
+    networks:
+      - all
+    init: true
+    restart: on-failure
+    
 # volumes --------------------------------------------------------------------
 
 # keeps the data shared between the containers

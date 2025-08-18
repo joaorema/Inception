@@ -51,6 +51,7 @@ clean:
 	@if [ -n "$$(docker ps -a --filter "name=redis" -q)" ]; then docker rm -f redis > $(HIDE) && echo " $(REDIS_CLN)" ; fi
 	@if [ -n "$$(docker ps -a --filter "name=ftp" -q)" ]; then docker rm -f ftp > $(HIDE) && echo " $(FTP_CLN)" ; fi
 	@if [ -n "$$(docker ps -a --filter "name=adminer" -q)" ]; then docker rm -f adminer > $(HIDE) && echo " $(ADMINER_CLN)" ; fi
+	@if [ -n "$$(docker ps -a --filter "name=whoami" -q)" ]; then docker rm -f whoami > $(HIDE) && echo " $(WHOAMI_CLN)" ; fi
 
 # backups the data and removes the containers, images and the host url from the host file
 fclean: clean backup
@@ -61,6 +62,7 @@ fclean: clean backup
 	@if [ -n "$$(docker image ls $(NAME)-redis -q)" ]; then docker image rm -f $(NAME)-redis > $(HIDE) && echo " $(REDIS_FLN)" ; fi
 	@if [ -n "$$(docker image ls $(NAME)-ftp -q)" ]; then docker image rm -f $(NAME)-ftp > $(HIDE) && echo " $(FTP_FLN)" ; fi
 	@if [ -n "$$(docker image ls $(NAME)-adminer -q)" ]; then docker image rm -f $(NAME)-adminer > $(HIDE) && echo " $(ADMINER_FLN)" ; fi
+	@if [ -n "$$(docker image ls $(NAME)-whoami -q)" ]; then docker image rm -f $(NAME)-whoami > $(HIDE) && echo " $(WHOAMI_FLN)" ; fi
 	@sudo hostsed rm 127.0.0.1 $(HOST_URL) > $(HIDE) && echo " $(HOST_RM)"
 
 status:
@@ -127,12 +129,16 @@ DB_CLN		= $(MARK) Container mariadb		$(REMOVED)
 REDIS_CLN	= $(MARK) Container redis		$(REMOVED)
 FTP_CLN		= $(MARK) Container ftp			$(REMOVED)
 ADMINER_CLN	= $(MARK) Container adminer		$(REMOVED)
+WHOAMI_CLN	= $(MARK) Container whoami		$(REMOVED)
+
 NX_FLN		= $(MARK) Image $(NAME)-nginx		$(REMOVED)
 WP_FLN		= $(MARK) Image $(NAME)-wordpress	$(REMOVED)
 DB_FLN		= $(MARK) Image $(NAME)-mariadb		$(REMOVED)
 REDIS_FLN	= $(MARK) Image $(NAME)-redis		$(REMOVED)
 FTP_FLN		= $(MARK) Image $(NAME)-ftp		$(REMOVED)
 ADMINER_FLN	= $(MARK) Image $(NAME)-adminer		$(REMOVED)
+WHOAMI_FLN	= $(MARK) Image $(NAME)-whoami		$(REMOVED)
+
 
 
 BKP		= $(MARK) Backup at $(HOME)		$(CREATED)
