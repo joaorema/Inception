@@ -4,28 +4,7 @@ This project implements the classic 42 Inception setup, featuring services like 
 plus bonus services including FTP, Redis, Adminer, a custom whoami netcat-based service, and a static HTML page. 
 Unlike many others, no official Docker Hub images were used. I built every container from scratch using custom Dockerfiles.
 
-Project Structure
-srcs/
-  ├── nginx/
-  │   ├── Dockerfile
-  │   ├── conf/               ← Nginx configuration files (e.g., nginx.conf, SSL settings)
-  │   └── tools/              ← Startup scripts (e.g., setup.sh for SSL and nginx launch)
-  │
-  ├── wordpress/
-  │   ├── Dockerfile
-  │   ├── conf/               ← PHP-FPM configuration (e.g., www.conf)
-  │   └── tools/              ← WordPress setup script (e.g., using WP-CLI to install and configure)
-  │
-  ├── mariadb/
-  │   ├── Dockerfile
-  │   ├── conf/               ← MariaDB configuration (e.g., custom `*.cnf` files)
-  │   └── tools/              ← Initialization scripts (e.g., init SQL, setup.sh)
-  │
-  ├── ftp/                     ← FTP service (Dockerfile, config, and startup scripts)
-  ├── redis/                   ← Redis service (Dockerfile, config)
-  ├── adminer/                 ← Adminer interface (Dockerfile, config)
-  ├── whoami/                  ← "Whoami" netcat based service (Dockerfile + script showing uptime, time, container ID)
-  └── static/                  ← Static HTML page (Dockerfile, HTML content)
+<img width="811" height="539" alt="Screenshot from 2025-08-19 11-50-10" src="https://github.com/user-attachments/assets/00cced76-1f74-4a7d-a0d6-289d63af8bec" />
 
 How It Works
 
