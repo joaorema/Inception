@@ -16,11 +16,25 @@ How It Works
   . tools/ folder (or equivalent) with scripts that perform configuration tasks or launch the service.
 
 -Startup Flow:
+
   1 - Build each service’s Docker image from its directory.
+  
   2 - Within the image, the Dockerfile copies or sets up configuration files and scripts.
+  
   3 - The service’s entrypoint script applies configuration (e.g., generating certs, applying CLI installs, initializing DB) and starts the service.
 
 -Why This Matters
+
   Demonstrates deep Docker understanding, no reliance on pre built images. Everything is handcrafted from base OS layers.
-  Offers modular clarity—each service is self contained with its own folder structure, letting you dive into service specific logic and config.
+  Each service is self contained with its own folder structure, letting you dive into service specific logic and config.
   Enhances maintainability. Clear breakdown between configuration, setup logic, and runtime behavior.
+
+To run :
+
+  - make start
+
+To clean:
+
+  - make prepare (removes images / volumes / containers)
+  
+  - make fclean (removes everything)
