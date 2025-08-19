@@ -4,6 +4,7 @@ This project implements the classic 42 Inception setup, featuring services like 
 plus bonus services including FTP, Redis, Adminer, a custom whoami netcat-based service, and a static HTML page. 
 Unlike many others, no official Docker Hub images were used. I built every container from scratch using custom Dockerfiles.
 
+Project Structure
 <img width="811" height="539" alt="Screenshot from 2025-08-19 11-50-10" src="https://github.com/user-attachments/assets/00cced76-1f74-4a7d-a0d6-289d63af8bec" />
 
 How It Works
